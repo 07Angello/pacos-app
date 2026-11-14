@@ -1,0 +1,7 @@
+{
+  "name": "pacos-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
