@@ -1,2 +1,75 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+// Tema Ionic de Paco's. Colores de marca + estados de pedido.
+// https://ionicframework.com/docs/theming/colors
+
+:root {
+  --ion-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ion-background-color: #fbf6ef;
+  --ion-background-color-rgb: 251, 246, 239;
+  --ion-text-color: #1f1a17;
+  --ion-text-color-rgb: 31, 26, 23;
+  --ion-toolbar-background: #ffffff;
+  --ion-tab-bar-background: #1f1a17;
+  --ion-tab-bar-color: #b9aea6;
+  --ion-tab-bar-color-selected: #ffc53d;
+  --ion-border-color: #efe3d3;
+
+  --ion-color-primary: #e8531f;
+  --ion-color-primary-rgb: 232, 83, 31;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #cc491b;
+  --ion-color-primary-tint: #ea6435;
+
+  --ion-color-secondary: #ffc53d;
+  --ion-color-secondary-rgb: 255, 197, 61;
+  --ion-color-secondary-contrast: #1f1a17;
+  --ion-color-secondary-contrast-rgb: 31, 26, 23;
+  --ion-color-secondary-shade: #e0ad36;
+  --ion-color-secondary-tint: #ffcb50;
+
+  --ion-color-success: #16a34a;
+  --ion-color-success-rgb: 22, 163, 74;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #138f41;
+  --ion-color-success-tint: #2dac5c;
+
+  --ion-color-danger: #dc2626;
+  --ion-color-danger-rgb: 220, 38, 38;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #c22121;
+  --ion-color-danger-tint: #e03c3c;
+
+  // Paleta propia
+  --p-brand: #e8531f;
+  --p-brand-dark: #a23110;
+  --p-brand-soft: #fff1ea;
+  --p-mustard: #ffc53d;
+  --p-ink: #1f1a17;
+  --p-ink-2: #463c36;
+  --p-muted: #75685f;
+  --p-line: #efe3d3;
+  --p-surface: #ffffff;
+  --p-cream: #fbf6ef;
+  --p-cream-2: #f6ead9;
+
+  // Estados (siempre acompañados de texto + ícono)
+  --st-pending: #b45309;
+  --st-pending-bg: #fff4d6;
+  --st-accepted: #1d4ed8;
+  --st-accepted-bg: #e3ecff;
+  --st-preparing: #c2410c;
+  --st-preparing-bg: #ffead9;
+  --st-ready: #15803d;
+  --st-ready-bg: #dcf5e4;
+  --st-delivery: #6d28d9;
+  --st-delivery-bg: #ede4ff;
+  --st-completed: #475569;
+  --st-completed-bg: #e8edf3;
+  --st-rejected: #b91c1c;
+  --st-rejected-bg: #fde2e2;
+
+  --radius: 18px;
+  --shadow: 0 1px 2px rgba(31, 26, 23, 0.06), 0 8px 24px -14px rgba(31, 26, 23, 0.3);
+}

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "155978660360",
+    "project_id": "pacos-app",
+    "storage_bucket": "pacos-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155978660360:android:13854315ffc771528a6fbd",
+        "android_client_info": {
+          "package_name": "hn.pacos.staff"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI7i92hBRk4trSZFkuqirXUm1MvN-c_K8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

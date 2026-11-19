@@ -1,15 +1,19 @@
 {
   "name": "pacos-app",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0 --port 8100",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "build:dev": "ng build --configuration development",
+    "cap:sync": "ng build && npx cap sync android",
+    "cap:android": "npx cap open android",
+    "start:local": "ng serve --configuration local --host 0.0.0.0 --port 8100"
   },
   "private": true,
   "dependencies": {
@@ -20,13 +24,22 @@
     "@angular/platform-browser": "22.2.5",
     "@angular/platform-browser-dynamic": "22.2.5",
     "@angular/router": "22.2.5",
+    "@capacitor/android": "8.6.2",
     "@capacitor/app": "8.1.2",
     "@capacitor/core": "8.6.2",
+    "@capacitor/filesystem": "8.1.5",
     "@capacitor/haptics": "8.0.2",
     "@capacitor/keyboard": "8.0.6",
+    "@capacitor/push-notifications": "8.1.3",
+    "@capacitor/share": "8.0.3",
     "@capacitor/status-bar": "8.0.4",
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@ionic/angular": "^9.0.0",
+    "@supabase/supabase-js": "^2.119.0",
+    "fflate": "0.8.3",
     "ionicons": "^8.1.0",
+    "jspdf": "4.2.1",
+    "jspdf-autotable": "5.0.9",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -44,5 +57,5 @@
     "typescript-eslint": "^8.61.0",
     "vitest": "^5.1.0"
   },
-  "description": "An Ionic project"
+  "description": "App interna de Paco's para administradores, encargados y cocina"
 }

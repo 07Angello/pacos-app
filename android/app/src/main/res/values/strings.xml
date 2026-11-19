@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Paco\'s Staff</string>
+    <string name="title_activity_main">Paco\'s Staff</string>
+    <string name="package_name">hn.pacos.staff</string>
+    <string name="custom_url_scheme">hn.pacos.staff</string>
+</resources>
