@@ -46,6 +46,16 @@
         </provider>
     </application>
 
+    <!-- "Cómo llegar": saber si Google Maps o Waze están instalados (Android 11+). -->
+    <queries>
+        <package android:name="com.google.android.apps.maps" />
+        <package android:name="com.waze" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
     <!-- Permissions -->
 
     <uses-permission android:name="android.permission.INTERNET" />

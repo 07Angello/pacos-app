@@ -9,7 +9,7 @@ describe('time helpers', () => {
 
   it('acorta el número de pedido', () => {
     expect(shortNumber('R-001248')).toBe('1248');
-    // 8 dígitos (desde la migración 15) y números viejos de 6 conviven sin problema
+    // 8 dígitos (formato actual) y números viejos de 6 conviven sin problema
     expect(shortNumber('R-00001424')).toBe('1424');
     expect(shortNumber('R-12345678')).toBe('12345678');
     expect(shortNumber('R-100000000')).toBe('100000000');

@@ -6,7 +6,7 @@ import { ConnectionState, StaffBackend, WatchHandlers } from './backend';
 import { supabaseBaseUrl } from './supabase-url';
 
 /**
- * Adaptador Supabase. Requiere aplicar las migraciones de pacos-web/supabase.
+ * Adaptador Supabase. Requiere el backend con sus migraciones aplicadas.
  * - Auth: email + contraseña (Supabase Auth). El rol se valida con la RPC staff_me.
  * - Datos: supabase.rpc(nombre, { params }).
  * - Tiempo real: INSERT en public.order_events (filtrado por RLS para empleados activos).

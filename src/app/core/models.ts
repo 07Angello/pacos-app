@@ -1,4 +1,4 @@
-// Contratos de las RPCs del personal. Definidos por las funciones SQL de pacos-web/supabase/migrations.
+// Contratos de las RPCs del personal. Definidos por las funciones SQL del backend.
 
 export type Role = 'ADMIN' | 'MANAGER' | 'CHEF';
 
@@ -53,6 +53,15 @@ export interface OrderHistoryEntry {
 }
 
 /** Pedido visto por el personal. Los campos opcionales no llegan al rol CHEF. */
+export interface DeliveryLocation {
+  lat: number;
+  lng: number;
+  /** Metros (solo si vino del GPS del cliente). */
+  accuracy: number | null;
+  /** GPS: ubicación del celular del cliente. MAP: el cliente movió el mapa hasta el punto. */
+  source: 'GPS' | 'MAP';
+}
+
 export interface StaffOrder {
   id: string;
   orderNumber: string;
@@ -64,6 +73,8 @@ export interface StaffOrder {
   customerName: string;
   customerPhone?: string | null;
   address?: { neighborhood: string; street: string; house: string; reference: string } | null;
+  /** Punto que marcó el cliente en el mapa (solo referencia; puede faltar). */
+  deliveryLocation?: DeliveryLocation | null;
   notes: string;
   paymentMethod?: string;
   subtotal?: number;
@@ -121,6 +132,8 @@ export interface StaffSettings {
   estimatedPrepMinutes: number | null;
   kitchenDelayMinutes: number;
   showUnavailableProducts: boolean;
+  /** Mapa de entrega en el checkout de la web. */
+  deliveryMapEnabled?: boolean;
   paymentMethods: PaymentMethod[];
   businessHours: BusinessHour[];
 }

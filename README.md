@@ -16,9 +16,9 @@ npm install
 npm start               # http://localhost:8100
 ```
 
-Requiere la base de datos creada y al menos un empleado (ver `../pacos-web/supabase/README.md`):
-los usuarios se crean en Supabase → Authentication y el rol se asigna con
-`supabase/scripts/create_employee.sql`. No hay registro público de empleados.
+Requiere un backend de Supabase con las migraciones aplicadas y al menos un administrador
+(repositorio `pacos-supabase`). Los demás empleados se crean desde **Ajustes → Empleados**;
+no hay registro público.
 
 Flujo completo: abre la web (`http://localhost:4200`) y la app a la vez. El pedido llega en vivo a
 **Pedidos** con sonido → **Aceptar** → aparece en **Cocina** (FIFO) → **Iniciar** → **Marcar listo**

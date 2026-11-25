@@ -82,6 +82,10 @@ type NumberKey = 'deliveryFee' | 'estimatedPrepMinutes' | 'kitchenDelayMinutes';
                 <div><strong>Entrega a domicilio</strong><span>Modalidad disponible en la web</span></div>
                 <ion-toggle [checked]="s.deliveryEnabled" (ionChange)="patch({ deliveryEnabled: $event.detail.checked })" aria-label="Entrega a domicilio" />
               </div>
+              <div class="setting">
+                <div><strong>Mapa de entrega</strong><span>{{ s.deliveryMapEnabled !== false ? 'El cliente marca su ubicación al pedir a domicilio' : 'Apagado: la web no muestra el mapa' }}</span></div>
+                <ion-toggle [checked]="s.deliveryMapEnabled !== false" (ionChange)="patch({ deliveryMapEnabled: $event.detail.checked })" aria-label="Mapa de entrega" />
+              </div>
               <button type="button" class="setting setting--button" (click)="openHours()">
                 <div><strong>Horario de atención</strong><span>{{ todayHours() }} · toca para cambiarlo por día</span></div>
                 <span class="setting__value"><i class="fa-regular fa-clock"></i> <i class="fa-solid fa-chevron-right"></i></span>

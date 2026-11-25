@@ -5,8 +5,12 @@ import { StaffOrder } from '../core/models';
 import { OrderActionsService } from '../core/order-actions.service';
 import { ACTIONS, canDo, ORDER_TYPE, OrderAction, STATUS_META } from '../core/order-status';
 import { OrdersStore } from '../core/orders.store';
+import { NotifyService } from '../core/notify.service';
 import { clockLabel, dayClockLabel, shortNumber } from '../core/time';
 import { MoneyPipe } from './money.pipe';
+import { OrderMapComponent } from './order-map';
+import { openDirections } from '../core/directions';
+import { DeliveryLocation } from '../core/models';
 import { StatusChipComponent } from './status-chip';
 
 const PAYMENT_META: Record<string, { label: string; icon: string }> = {
@@ -17,7 +21,7 @@ const PAYMENT_META: Record<string, { label: string; icon: string }> = {
 /** Detalle completo del pedido para encargado/admin (§5.3). Se usa en modal (teléfono) o panel (tablet). */
 @Component({
   selector: 'app-order-detail',
-  imports: [DatePipe, MoneyPipe, StatusChipComponent],
+  imports: [DatePipe, MoneyPipe, StatusChipComponent, OrderMapComponent],
   template: `
     @if (order(); as o) {
       <div class="detail">
@@ -71,6 +75,22 @@ const PAYMENT_META: Record<string, { label: string; icon: string }> = {
                 <p>{{ a.street }}@if (a.house) {, {{ a.house }}}</p>
                 <p class="muted">Ref.: {{ a.reference }}</p>
               </div>
+            </div>
+          }
+          @if (o.orderType === 'DELIVERY' && o.deliveryLocation; as loc) {
+            <div class="detail__map">
+              @defer (on viewport) {
+                <app-order-map [lat]="loc.lat" [lng]="loc.lng" [accuracy]="loc.accuracy" />
+              } @placeholder {
+                <div class="order-map order-map--ph"><i class="fa-solid fa-map-location-dot"></i></div>
+              }
+              <p class="detail__map-src">
+                <i class="fa-solid" [class]="loc.source === 'GPS' ? 'fa-mobile-screen' : 'fa-hand-pointer'"></i>
+                {{ loc.source === 'GPS' ? 'Ubicación del celular del cliente' + (loc.accuracy ? ' (±' + loc.accuracy + ' m)' : '') : 'Marcado por el cliente en el mapa' }} · solo referencia
+              </p>
+              <button type="button" class="btn btn--primary btn--block detail__directions" (click)="directions(loc)">
+                <i class="fa-solid fa-diamond-turn-right"></i> Cómo llegar
+              </button>
             </div>
           }
         </section>
@@ -148,6 +168,7 @@ export class OrderDetailComponent {
 
   private readonly store = inject(OrdersStore);
   private readonly auth = inject(AuthService);
+  private readonly notify = inject(NotifyService);
   private readonly actionsService = inject(OrderActionsService);
 
   protected readonly order = computed<StaffOrder | undefined>(() => this.store.get(this.orderId()));
@@ -185,5 +206,14 @@ export class OrderDetailComponent {
     if (!o) return;
     const ok = await this.actionsService.run(o, action);
     if (ok && (action === 'accept' || action === 'reject' || action === 'complete') && this.closable()) this.dismissed.emit();
+  }
+
+  protected async directions(loc: DeliveryLocation): Promise<void> {
+    try {
+      const app = await openDirections(loc.lat, loc.lng);
+      if (app === 'browser') void this.notify.toast('No se encontró Google Maps ni Waze: se abrió en el navegador.', 'info', 2500);
+    } catch {
+      void this.notify.toast('No se pudo abrir el mapa.', 'error');
+    }
   }
 }

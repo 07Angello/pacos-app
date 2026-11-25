@@ -19,7 +19,7 @@
             },
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "allowedCommonJsDependencies": ["html2canvas", "canvg", "core-js", "raf", "rgbcolor"],
+            "allowedCommonJsDependencies": ["leaflet", "html2canvas", "canvg", "core-js", "raf", "rgbcolor"],
             "polyfills": [],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -48,8 +48,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kb",
-                  "maximumError": "8kb"
+                  "maximumWarning": "12kb",
+                  "maximumError": "16kb"
                 }
               ],
               "fileReplacements": [

@@ -11,7 +11,7 @@ export interface ReportSummary {
   pickupSales: number;
   deliveryOrders: number;
   deliverySales: number;
-  /** Comer en el local (pedidos tomados en mostrador). Pueden faltar en reportes de antes de la migración 18. */
+  /** Comer en el local (pedidos tomados en mostrador). Pueden faltar si el backend es de una versión anterior. */
   dineInOrders?: number;
   dineInSales?: number;
   /** Origen: en línea (web) vs. tomado en el local. */
